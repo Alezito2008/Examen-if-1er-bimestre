@@ -31,8 +31,6 @@ public class FlotaDeTaxis : MonoBehaviour
         float kilometros_totales = KM_POR_DIA * unidades * diasTrabajados;
         float litros_gastados = kilometros_totales / KM_POR_LITRO;
 
-        Debug.Log($"KMT: {kilometros_totales}, lg: {litros_gastados}");
-
         if (litros_gastados <= 100)
         {
             precio_final = litros_gastados * PRECIO_COMBUSTIBLE;
@@ -43,7 +41,7 @@ public class FlotaDeTaxis : MonoBehaviour
 
         Debug.Log($"Una flota de {unidades} unidades trabajando durante {diasTrabajados} dìas implicará un gasto de ${precio_final} pesos en concepto de combustible");
         if (litros_gastados > 100) {
-            Debug.Log($"Se aplicó un descuento del 20% ahorrando ${(litros_gastados * PRECIO_COMBUSTIBLE) - precio_final} pesos.");
+            Debug.Log($"Se aplicó un descuento del 20% ahorrando ${(litros_gastados * PRECIO_COMBUSTIBLE) - precio_final} pesos. (Precio original: ${litros_gastados * PRECIO_COMBUSTIBLE})");
         }
     }
     
