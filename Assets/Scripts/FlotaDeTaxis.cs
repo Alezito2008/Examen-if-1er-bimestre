@@ -7,10 +7,10 @@ public class FlotaDeTaxis : MonoBehaviour
     public int unidades;
     public int diasTrabajados;
 
-    readonly int KM_POR_LITRO = 15;
-    readonly int KM_POR_DIA = 90;
+    readonly float KM_POR_LITRO = 15;
+    readonly float KM_POR_DIA = 90;
 
-    readonly int PRECIO_COMBUSTIBLE = 130;
+    readonly float PRECIO_COMBUSTIBLE = 130;
     readonly float PRECIO_COMBUSTIBLE_DESCONTADO = 130 * .8f;
 
     // Start is called before the first frame update
@@ -28,14 +28,16 @@ public class FlotaDeTaxis : MonoBehaviour
 
         float precio_final;
 
-        int kilometros_totales = KM_POR_DIA * unidades * diasTrabajados;
-        int litros_gastados = kilometros_totales / KM_POR_LITRO;
+        float kilometros_totales = KM_POR_DIA * unidades * diasTrabajados;
+        float litros_gastados = kilometros_totales / KM_POR_LITRO;
+
+        Debug.Log($"KMT: {kilometros_totales}, lg: {litros_gastados}");
 
         if (litros_gastados <= 100)
         {
             precio_final = litros_gastados * PRECIO_COMBUSTIBLE;
         } else {
-            precio_final = 100;
+            precio_final = 100 * PRECIO_COMBUSTIBLE;
             precio_final += (litros_gastados - 100) * PRECIO_COMBUSTIBLE_DESCONTADO;
         }
 
